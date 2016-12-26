@@ -1,0 +1,9 @@
+# Node modules #
+/application/web/node_modules
+
+# Vendor #
+/application/vendor
+
+# .js and .js.map #
+/application/web/app/*.js
+/application/web/app/*.js.map
