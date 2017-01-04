@@ -7,10 +7,14 @@ It works with Apache, however, the deep linking is not available but will be soo
 In the folder "/config/vhosts", you can find the .conf file for Apache, which enables Angular to call Symfony web services on the "/api" route.
 
 Don't forget to run the following commands:
-    composer install
-    npm install
+```bash
+composer install
+npm install
+```
 
 To auto-compile typescript files, run the following command:
-    npm start
+```bash
+npm start
+```
 
 I hope you will enjoy it!
