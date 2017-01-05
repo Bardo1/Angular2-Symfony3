@@ -1,14 +1,16 @@
 # Symfony3 - Angular2
 
-I try to combine Symfony3 and Angular2 from scratch and with the [Angular Quickstart](https://angular.io/docs/ts/latest/quickstart.html). 
-It works with Apache, however, the deep linking is not available but will be soon... I'm working on it!
+I try to combine [Symfony3](https://symfony.com/) and [Angular2](https://angular.io/) from scratch and with the [Angular Quickstart](https://angular.io/docs/ts/latest/quickstart.html).
 
 ## Getting started
-In the folder "/config/vhosts", you can find the .conf file for Apache, which enables Angular to call Symfony web services on the "/api" route.
-
-Don't forget to run the following commands:
+Run the following commands:
 ```bash
+cd sf-a
+ln -s /var/www/html/sf-a/config/vhosts/sf-a.conf /etc/apache2/sites-available/
+sudo service apache2 restart
+cd application/be
 composer install
+cd ../fe
 npm install
 ```
 
@@ -16,5 +18,14 @@ To auto-compile typescript files, run the following command:
 ```bash
 npm start
 ```
+
+### Don't forget...
+Install your database manager and edit the Symfony "parameters.yml".
+Enable "rewrite" module:
+```bash
+sudo a2enmod rewrite
+sudo service apache2 restart
+```
+===================================
 
 I hope you will enjoy it!

@@ -19,9 +19,10 @@ class TestController extends Controller
             ->getManager()
             ->getRepository('AppBundle:Test');
 
-        $entity = $repo->findOneByMyKey('zikoss');
+        // $entity = $repo->findOneByMyKey('zikoss');
         
-        $serializedEntity = $this->container->get('serializer')->serialize($entity, 'json');
-        return new JsonResponse($serializedEntity);
+        // $serializedEntity = $this->container->get('serializer')->serialize($entity, 'json');
+        // return new JsonResponse($serializedEntity);
+        return new JsonResponse(array('MyKey' => 'From Symfony', 'MyValue' => 200));
     }
 }
