@@ -1,6 +1,37 @@
-<h1>Welcome to the dashboard!</h1>
-<h3>Text below comes from Symfony</h3>
-<div *ngIf="test">
-    <h2>{{test.MyKey}}</h2>
-    <h3>{{test.MyValue}}</h3>
+<div class="col-md-4">
+    <div class="alert alert-info">
+        <h1>Welcome to the dashboard!</h1>
+        <h3>Text to the right comes from Symfony</h3>
+    </div>
+    <div class="alert alert-info">
+        <h4>You want to add another one?</h4>
+        <form (ngSubmit)="addTest(testForm)" #testForm="ngForm">
+            <div class="form-group">
+                <label for="myKey">String</label>
+                <input type="text" class="form-control" id="myKey" required [(ngModel)]="model.myKey" name="myKey" #myKey="ngModel" />
+                <div [hidden]="myKey.valid || myKey.pristine" class="alert alert-danger">
+                    This field is mandatory
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="myValue">Integer</label>
+                <input type="number" class="form-control" id="myValue" required [(ngModel)]="model.myValue" name="myValue" #myValue="ngModel" />
+                <div [hidden]="myValue.valid || myValue.pristine" class="alert alert-danger">
+                    This field is mandatory
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default" [disabled]="!testForm.form.valid || submitted">Submit</button>
+            <div [hidden]="!error" class="alert alert-danger">
+                    Ooooops, it didn't work...
+                </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-8">
+    <div *ngIf="tests">
+        <div *ngFor="let item of tests" class="alert alert-info">
+            <p>{{item.myKey}}</p>
+            <p>{{item.myValue}}</p>
+        </div>
+    </div>
 </div>

@@ -1,28 +1,67 @@
 <?php
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
+use FOS\RestBundle\View\View;
+
+use AppBundle\Form\Type\TestType;
+use AppBundle\Entity\Test;
 
 class TestController extends Controller 
 {
     /**
-    * @Route("/test", name="test")
-    * @Method({"GET"})
-    */
-    public function getTest(Request $request) 
+     * @Rest\View()
+     */
+    public function getTestsAction(Request $request) 
     {
-        $repo = $this->getDoctrine()
+        $tests = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Test');
-
-        // $entity = $repo->findOneByMyKey('zikoss');
+            ->getRepository('AppBundle:Test')
+            ->findAll();
         
-        // $serializedEntity = $this->container->get('serializer')->serialize($entity, 'json');
-        // return new JsonResponse($serializedEntity);
-        return new JsonResponse(array('MyKey' => 'From Symfony', 'MyValue' => 200));
+        return $tests;
+    }
+
+    /**
+     * @Rest\View()
+     */
+    public function getTestAction($id, Request $request) 
+    {
+        $test = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Test')
+            ->findOneByMyKey($id);
+
+        if (empty($test)) {
+            return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
+        }
+        
+        return $test;
+    }
+    
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     */
+    public function postTestAction(Request $request)
+    {
+        $test = new Test();
+        $form = $this->createForm(TestType::class, $test);
+
+        $form->submit($request->request->all()); // Validation des données
+
+        if ($form->isValid()) 
+        {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $em->persist($test);
+            $em->flush();
+            return $test;
+        } 
+        else {
+            return $form;
+        }
     }
 }

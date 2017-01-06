@@ -1,0 +1,8 @@
+AppBundle\Entity\Test:
+    properties:
+        myKey:
+            - NotBlank: ~
+            - Type: string
+        myValue:
+            - NotBlank: ~
+            - Type: int

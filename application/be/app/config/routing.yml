@@ -1,6 +1,8 @@
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
-    prefix:   /
 
+tests:
+    type:       rest
+    resource:   AppBundle\Controller\TestController
 
