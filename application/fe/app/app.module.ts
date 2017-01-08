@@ -1,32 +1,38 @@
+// NG-MODULES
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
+// MODULES
 import { AppRoutingModule } from './app-routing.module';
+import { TranslateModule } from 'ng2-translate';
 
-import { NavbarComponent }  from './ui/navbar/navbar.component';
-import { HomeComponent }  from './ui/home/home.component';
+// COMPONENTS
 import { DashboardComponent }  from './ui/dashboard/dashboard.component';
+import { HomeComponent }  from './ui/home/home.component';
+import { NavbarComponent }  from './ui/navbar/navbar.component';
 
-import { TestService }  from './bal/services/test.service';
+// PROVIDERS
 import { TestRepository }  from './dal/repositories/test.repository';
+import { TestService }  from './bal/services/test.service';
 
 @NgModule({
   imports:      [ 
     BrowserModule,
+    FormsModule,
     HttpModule,
     AppRoutingModule,
-    FormsModule
+    TranslateModule.forRoot()
   ],
   declarations: [ 
-    NavbarComponent,
+    DashboardComponent, 
     HomeComponent,
-    DashboardComponent 
+    NavbarComponent
   ],
   providers : [
-    TestService,
-    TestRepository
+    TestRepository,
+    TestService
   ],
   bootstrap:    [ 
     NavbarComponent 
