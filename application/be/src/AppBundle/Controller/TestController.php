@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
+use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 
 use AppBundle\Form\Type\TestType;
@@ -51,8 +51,8 @@ class TestController extends Controller
         $test = new Test();
         $form = $this->createForm(TestType::class, $test);
 
-        $form->submit($request->request->all()); // Validation des données
-
+        $form->submit($request->request->all());
+        
         if ($form->isValid()) 
         {
             $em = $this->get('doctrine.orm.entity_manager');

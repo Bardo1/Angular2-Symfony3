@@ -2,11 +2,11 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 
 // MODULES
 import { AppRoutingModule } from './app-routing.module';
-import { TranslateModule } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService } from 'ng2-translate';
 
 // COMPONENTS
 import { DashboardComponent }  from './ui/dashboard/dashboard.component';
@@ -23,7 +23,11 @@ import { TestService }  from './bal/services/test.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot({
+          provide: TranslateLoader,
+          useFactory: (http: Http) => new TranslateStaticLoader(http, '/api/jsonresources'),
+          deps: [Http]
+      })
   ],
   declarations: [ 
     DashboardComponent, 
@@ -39,4 +43,9 @@ import { TestService }  from './bal/services/test.service';
   ]
 })
 
-export class AppModule { }
+export class AppModule { 
+  constructor(private translate: TranslateService) {
+    translate.addLangs(["en"]);
+    translate.setDefaultLang('en');
+  }
+}
