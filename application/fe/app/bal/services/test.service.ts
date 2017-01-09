@@ -9,11 +9,11 @@ export class TestService {
     constructor(private testRepository: TestRepository) { }
 
     getAllTests(): Promise<Array<Test>> {
-        return this.testRepository.getAllTests();
+        return this.testRepository.getAll();
     }
 
-    getTest(key: string): Promise<Test> {
-        return this.testRepository.getTest(key);
+    getTest(id: number): Promise<Test> {
+        return this.testRepository.getTest(id);
     }
 
     postTest(entity: Test): Promise<Test> {
