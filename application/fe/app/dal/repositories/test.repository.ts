@@ -4,7 +4,7 @@ import { Test } from '../dto/test';
 
 export class TestRepository extends BaseRepository<Test> {
 
-    private apiUrl = 'apii/tests';
+    private apiUrl = 'api/tests';
 
     getAll(): Promise<Array<Test>> {
         return super.getAll(this.apiUrl);

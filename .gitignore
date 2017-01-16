@@ -7,3 +7,9 @@
 # .js and .js.map #
 /application/fe/app/**/*.js
 /application/fe/app/**/*.js.map
+
+# npm debug #
+/application/**/npm-debug.log
+
+# visual studio code #
+./.vscode

@@ -26,7 +26,7 @@ export class BaseRepository<T> {
                 self.slimLoadingBarService.complete();
                 return response.json() as Array<T>;
             })
-            .catch(this.handleError);
+            .catch(error => this.handleError(error, self));
     }
 
     /**
@@ -36,10 +36,15 @@ export class BaseRepository<T> {
      * @returns A promise of T.
      */
     getEntity(apiUrl: string, id: number): Promise<T> {
+        var self = this;
+        self.slimLoadingBarService.start();
         return this.http.get(apiUrl + '/' + id)
             .toPromise()
-            .then(response => response.json() as T)
-            .catch(this.handleError);
+            .then(response => {
+                self.slimLoadingBarService.complete();
+                return response.json() as T;
+            })
+            .catch(error => this.handleError(error, self));
     }
 
     /**
@@ -49,10 +54,15 @@ export class BaseRepository<T> {
      * @returns A promise of T.
      */
     postEntity(apiUrl: string, entity: T): Promise<T> {
+        var self = this;
+        self.slimLoadingBarService.start();
         return this.http.post(apiUrl, JSON.stringify(entity), {headers: this.headers})
             .toPromise()
-            .then(response => response.json() as T)
-            .catch(this.handleError);
+            .then(response => {
+                self.slimLoadingBarService.complete();
+                return response.json() as T;
+            })
+            .catch(error => this.handleError(error, self));
     }
 
     /**
@@ -60,9 +70,9 @@ export class BaseRepository<T> {
      * @param error : the erro.
      * @returns A promise of any.
      */
-    private handleError(error: any): Promise<any> {
+    private handleError(error: any, self: any): Promise<any> {
         console.error('An error occurred', error);
-        this.slimLoadingBarService.reset();
+        self.slimLoadingBarService.reset();
         return Promise.reject(error.message || error);
     }
 }
