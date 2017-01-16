@@ -4,22 +4,15 @@
  */
 (function (global) {
   System.config({
-    // //use typescript for compilation
-    // transpiler: 'typescript',
-    // //typescript compiler options
-    // typescriptOptions: {
-    //   emitDecoratorMetadata: true
-    // },
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/',
-      'unpkg:': 'https://unpkg.com/'
+      'npm:': 'node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
-      // our app is within the app folder
+      // application folder
       app: 'app',
-      'ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.umd.js',
+      
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -31,6 +24,9 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
       // other libraries
+      'ng2-slim-loading-bar': 'npm:ng2-slim-loading-bar/bundles/index.umd.js',
+      // 'ng2-toastr': 'npm:ng2-toastr/bundles/ng2-toastr.min.js',
+      'ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.umd.js',
       'rxjs': 'npm:rxjs',
       'typescript': 'npm:typescript@2.0.2/lib/typescript.js'
     },
@@ -40,10 +36,13 @@
         main: './main.js',
         defaultExtension: 'js'
       },
-      rxjs: {
+      'ng2-translate': {
         defaultExtension: 'js'
       },
-      'ng2-translate': {
+      'ng2-slim-loading-bar': { 
+        defaultExtension: 'js' 
+      },
+      rxjs: {
         defaultExtension: 'js'
       }
     }

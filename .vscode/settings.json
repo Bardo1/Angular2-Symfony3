@@ -2,7 +2,7 @@
 {
     "files.exclude": {
         "**/node_modules/": true,
-        "**/app/**/*.js": true,
-        "**/app/**/*.map": true
+        "**/fe/app/**/*.js": true,
+        "**/fe/app/**/*.map": true
     }
 }

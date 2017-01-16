@@ -1,0 +1,30 @@
+img.loading {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+}
+
+.slim-loading-bar {
+    position:fixed;
+    margin:0;
+    padding:0;
+    top:0;
+    left:0;
+    right:0;
+    z-index:99999
+}
+
+.slim-loading-bar-progress {
+    margin:0;
+    padding:0;
+    z-index:99998;
+    color: #b9def0; 
+    box-shadow:0 0 10px 0;
+    height:2px;
+    opacity:0;
+    -webkit-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}

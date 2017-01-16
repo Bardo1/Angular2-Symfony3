@@ -5,7 +5,3 @@ app:
 tests:
     type:       rest
     resource:   AppBundle\Controller\TestController
-
-json_resource:
-    type:       rest
-    resource:   AppBundle\Controller\JsonResourceController

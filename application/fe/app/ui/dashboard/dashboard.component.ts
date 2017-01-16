@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 import { TestService } from '../../bal/services/test.service';
 import { Test } from '../../dal/dto/test';
 
@@ -15,7 +18,7 @@ export class DashboardComponent implements OnInit {
   submitted = false;
   error = false;
 
-  constructor (private testService: TestService) {}
+  constructor (private testService: TestService, public toastr: ToastsManager) {}
 
   ngOnInit(): void {
     this.testService.getAllTests().then(tests => this.tests = tests);
@@ -26,16 +29,16 @@ export class DashboardComponent implements OnInit {
     this.error = false;
     this.testService.postTest(this.model)
       .then(res => {
+        this.toastr.info('Added', 'Success!');
         this.tests.push(res);
         this.submitted = false;
         this.error = false;
         form.reset();
       })
       .catch(() => {
+        this.toastr.error('Ooooops', 'Error!');
         this.submitted = false;
         this.error = true;
       });
   }
-
-  get diagnostic() { return JSON.stringify(this.model);}
 }

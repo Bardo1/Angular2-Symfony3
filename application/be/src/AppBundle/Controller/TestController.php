@@ -22,7 +22,7 @@ class TestController extends Controller
             ->getManager()
             ->getRepository('AppBundle:Test')
             ->findAll();
-        
+
         return $tests;
     }
 
