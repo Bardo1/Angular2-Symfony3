@@ -9,8 +9,7 @@ import 'rxjs/add/operator/toPromise';
 export class BaseRepository<T> {
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http, private slimLoadingBarService: SlimLoadingBarService) { 
-    }
+    constructor(private http: Http, private slimLoadingBarService: SlimLoadingBarService) {}
 
     /**
      * Gets all T entities.
@@ -20,13 +19,13 @@ export class BaseRepository<T> {
     getAll(apiUrl: string):Promise<Array<T>> {
         var self = this;
         self.slimLoadingBarService.start();
-        return this.http.get(apiUrl)
+        return self.http.get(apiUrl)
             .toPromise()
             .then(response => {
                 self.slimLoadingBarService.complete();
                 return response.json() as Array<T>;
             })
-            .catch(error => this.handleError(error, self));
+            .catch(error => self.handleError(error, self));
     }
 
     /**
@@ -38,13 +37,13 @@ export class BaseRepository<T> {
     getEntity(apiUrl: string, id: number): Promise<T> {
         var self = this;
         self.slimLoadingBarService.start();
-        return this.http.get(apiUrl + '/' + id)
+        return self.http.get(apiUrl + '/' + id)
             .toPromise()
             .then(response => {
                 self.slimLoadingBarService.complete();
                 return response.json() as T;
             })
-            .catch(error => this.handleError(error, self));
+            .catch(error => self.handleError(error, self));
     }
 
     /**
@@ -56,13 +55,13 @@ export class BaseRepository<T> {
     postEntity(apiUrl: string, entity: T): Promise<T> {
         var self = this;
         self.slimLoadingBarService.start();
-        return this.http.post(apiUrl, JSON.stringify(entity), {headers: this.headers})
+        return self.http.post(apiUrl, JSON.stringify(entity), {headers: self.headers})
             .toPromise()
             .then(response => {
                 self.slimLoadingBarService.complete();
                 return response.json() as T;
             })
-            .catch(error => this.handleError(error, self));
+            .catch(error => self.handleError(error, self));
     }
 
     /**

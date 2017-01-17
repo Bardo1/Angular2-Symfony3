@@ -1,4 +1,4 @@
-# Symfony3 - Angular2
+# Angular2 - Symfony3
 
 I try to combine [Symfony3](https://symfony.com/) and [Angular2](https://angular.io/) from scratch and with the [Angular Quickstart](https://angular.io/docs/ts/latest/quickstart.html).
 
@@ -12,9 +12,9 @@ I added the following modules:
 ## Getting started
 For apache, run the following commands:
 ```bash
-cd sf-a
-ln -s /var/www/html/sf-a/config/vhosts/sf-a.conf /etc/apache2/sites-available/
-sudo a2ensite sf-a.conf 
+cd ng2-sf3
+sudo ln -s /var/www/html/ng2-sf3/config/vhosts/ng2-sf3.conf /etc/apache2/sites-available/
+sudo a2ensite ng2-sf3.conf 
 sudo service apache2 restart
 ```
 
@@ -32,10 +32,10 @@ npm start
 ```
 
 ### Don't forget...
-Install your database manager and edit the Symfony "parameters.yml".
+Install your database manager and edit the Symfony "parameters.yml".  
 Add the following line in /etc/hosts
 ```
-127.0.0.1 	sf-a.dev
+127.0.0.1 	ng2-sf3.dev
 ```
 Enable "rewrite" module:
 ```bash
