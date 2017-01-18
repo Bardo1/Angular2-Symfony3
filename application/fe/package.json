@@ -1,7 +1,7 @@
 {
-  "name": "sf-a",
+  "name": "ng2-sf3",
   "version": "1.0.0",
-  "description": "Symfony3 with angular2 architecture.",
+  "description": "Angular2 with Symfony3.",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",

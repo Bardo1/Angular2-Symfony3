@@ -1,0 +1,8 @@
+AppBundle\Entity\Test:
+    attributes:
+        id:
+            groups: ['test']
+        myKey:
+            groups: ['test']
+        myValue:
+            groups: ['test']

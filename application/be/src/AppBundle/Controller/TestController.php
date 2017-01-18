@@ -14,7 +14,7 @@ use AppBundle\Entity\Test;
 class TestController extends Controller 
 {
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"test"})
      */
     public function getTestsAction(Request $request) 
     {
@@ -27,7 +27,7 @@ class TestController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"test"})
      */
     public function getTestAction($id, Request $request) 
     {
@@ -37,14 +37,14 @@ class TestController extends Controller
             ->findOneByMyKey($id);
 
         if (empty($test)) {
-            return new JsonResponse(['message' => 'Place not found'], Response::HTTP_NOT_FOUND);
+            $test = \FOS\RestBundle\View\View::create(['message' => 'Test not found'], Response::HTTP_NOT_FOUND);
         }
         
         return $test;
     }
     
     /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"test"})
      */
     public function postTestAction(Request $request)
     {

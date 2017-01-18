@@ -12,4 +12,12 @@
 /application/**/npm-debug.log
 
 # visual studio code #
-./.vscode
+/.vscode/**
+
+# Tests #
+/application/be/tests
+/application/fe/e2e
+/application/fe/karma.conf.js
+/application/fe/karma-test-shim.js
+/application/fe/protractor.config.js
+/application/fe/tslint.json
