@@ -31,6 +31,12 @@ To auto-compile typescript files, run the following command:
 npm start
 ```
 
+## Doctrine
+```bash
+cd ../be
+php bin/console doctrine:schema:update
+```
+
 ### Don't forget...
 Install your database manager and edit the Symfony "parameters.yml".  
 Add the following line in /etc/hosts
