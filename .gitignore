@@ -11,6 +11,9 @@
 # npm debug #
 /application/**/npm-debug.log
 
+# jwt keys
+/application/be/var/jwt
+
 # visual studio code #
 /.vscode/**
 

@@ -1,6 +1,6 @@
 # Angular2 - Symfony3
 
-I try to combine [Symfony3](https://symfony.com/) and [Angular2](https://angular.io/) from scratch and with the [Angular Quickstart](https://angular.io/docs/ts/latest/quickstart.html).
+I try to combine [Symfony3](https://symfony.com/) and [Angular2](https://angular.io/) with [Webpack](https://webpack.github.io/) from scratch/
 
 ## What's in the box?
 I added the following modules:  
@@ -16,6 +16,14 @@ cd ng2-sf3
 sudo ln -s /var/www/html/ng2-sf3/config/vhosts/ng2-sf3.conf /etc/apache2/sites-available/
 sudo a2ensite ng2-sf3.conf 
 sudo service apache2 restart
+```
+
+Generate the SSH keys :
+
+```
+mkdir var/jwt 
+openssl genrsa -out var/jwt/private.pem -aes256 4096  
+openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem  
 ```
 
 To install dependencies:
