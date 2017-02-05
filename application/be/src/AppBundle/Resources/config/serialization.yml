@@ -1,3 +1,14 @@
+AppBundle\Entity\AuthToken:
+    attributes:
+        id:
+            groups: ['auth-token']
+        value:
+            groups: ['auth-token']
+        createdDate:
+            groups: ['auth-token']
+        user:
+            groups: ['auth-token']
+
 AppBundle\Entity\Test:
     attributes:
         id:
@@ -6,3 +17,14 @@ AppBundle\Entity\Test:
             groups: ['test']
         myValue:
             groups: ['test']
+
+AppBundle\Entity\User:
+    attributes:
+        id:
+            groups: ['user', 'preference', 'auth-token']
+        email:
+            groups: ['user', 'preference', 'auth-token']
+        firstname:
+            groups: ['user', 'preference', 'auth-token']
+        lastname:
+            groups: ['user', 'preference', 'auth-token']

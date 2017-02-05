@@ -1,3 +1,12 @@
+AppBundle\Entity\Credentials:
+    properties:
+        login:
+            - NotBlank: ~
+            - Type: string
+        password:
+            - NotBlank: ~
+            - Type: string
+
 AppBundle\Entity\Test:
     properties:
         myKey:
@@ -6,3 +15,29 @@ AppBundle\Entity\Test:
         myValue:
             - NotBlank: ~
             - Type: int
+
+AppBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        id:
+            - Blank: { groups: [New] }
+            - NotBlank: { groups: [PartialUpdate, FullUpdate] }
+            - Type: int
+        email:
+            - NotBlank: ~
+            - Email: ~
+        plainPassword:
+            - NotBlank: ~
+            - Type: string
+            - Length:
+                min: 4
+                max: 50
+        firstname:
+            - Type: string
+            - Length:
+                max: 100
+        lastname:
+            - Type: string
+            - Length:
+                max: 100

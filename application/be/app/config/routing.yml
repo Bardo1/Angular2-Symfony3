@@ -2,6 +2,10 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
-tests:
+auth-tokens:
+    type:     rest
+    resource: AppBundle\Controller\AuthTokenController
+
+users:
     type:       rest
-    resource:   AppBundle\Controller\TestController
+    resource:   AppBundle\Controller\UserController
