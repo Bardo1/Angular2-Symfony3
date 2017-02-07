@@ -13,6 +13,7 @@ I added the following modules:
 - [ng2-translate](https://github.com/ocombe/ng2-translate)  
 
 ## Getting started
+### Apache
 For apache, run the following commands:
 ```bash
 cd ng2-sf3
@@ -20,32 +21,33 @@ sudo ln -s /var/www/html/ng2-sf3/config/vhosts/ng2-sf3.conf /etc/apache2/sites-a
 sudo a2ensite ng2-sf3.conf 
 sudo service apache2 restart
 ```
-
+### Lexik JWT Authentication
 Generate the SSH keys :
 
 ```
+cd application/be
 mkdir var/jwt 
 openssl genrsa -out var/jwt/private.pem -aes256 4096  
 openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem  
 ```
 
+### Install dependencies
 To install dependencies:
 ```bash
-cd application/be
 composer install
 cd ../fe
 npm install
 ```
 
-To run webpack:
+### Run webpack
 ```bash
 npm start
 ```
 
-## Doctrine
+### Doctrine
 ```bash
 cd ../be
-php bin/console doctrine:schema:update
+php bin/console doctrine:schema:update --force
 ```
 
 ### Don't forget...
