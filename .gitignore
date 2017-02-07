@@ -5,8 +5,8 @@
 /application/**/vendor
 
 # .js and .js.map #
-/application/fe/app/**/*.js
-/application/fe/app/**/*.js.map
+/application/fe/src/**/*.js
+/application/fe/src/**/*.js.map
 
 # npm debug #
 /application/**/npm-debug.log
