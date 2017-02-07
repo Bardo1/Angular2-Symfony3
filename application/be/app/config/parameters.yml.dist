@@ -18,5 +18,12 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-# nelmio cors
+    # nelmio cors
     cors_allow_origin: 'http://localhost:8080'
+
+    # lexit jwt auth
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  'private_paraphrase'                       # ssh key pass phrase
+    jwt_token_ttl:        3600
+
